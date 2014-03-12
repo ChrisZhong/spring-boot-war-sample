@@ -1,0 +1,25 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+buildscript {
+    repositories {
+        maven { url 'http://repo.spring.io/libs-snapshot' }
+        mavenLocal()
+    }
+    dependencies { classpath('org.springframework.boot:spring-boot-gradle-plugin:1.0.0.RC4') }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://repo.spring.io/milestone' }
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+dependencies { compile 'org.springframework.boot:spring-boot-starter-web:1.0.0.RC4' }
+
+task wrapper(type: Wrapper) { gradleVersion = '1.11' }
